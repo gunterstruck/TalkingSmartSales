@@ -1,0 +1,13 @@
+{
+  "name": "talking-smart-sales",
+  "version": "1.0.0",
+  "description": "Podcast PWA for TalkingSmartSales",
+  "scripts": {
+    "build:episodes": "node build-episodes.js"
+  },
+  "dependencies": {
+    "music-metadata": "^8.1.4",
+    "node-id3": "^0.2.6"
+  },
+  "type": "module"
+}
