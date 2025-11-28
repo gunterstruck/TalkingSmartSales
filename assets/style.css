@@ -176,29 +176,6 @@ h1 {
     box-shadow: 0 6px 25px rgba(147, 51, 234, 0.6);
 }
 
-.download-btn {
-    background: var(--surface-light);
-    color: var(--text-color);
-    border: 1px solid var(--border-color);
-}
-
-.download-btn:hover {
-    background: var(--border-color);
-    transform: translateY(-2px);
-}
-
-.download-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.download-btn.cached {
-    background: var(--success-color);
-    color: white;
-    border-color: var(--success-color);
-}
-
 .btn.primary-btn {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: white;
