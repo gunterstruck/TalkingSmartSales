@@ -84,7 +84,7 @@ h1 {
 
 .episode-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 30px rgba(147, 51, 234, 0.3);
 }
 
 .episode-header {
@@ -147,12 +147,12 @@ h1 {
 .play-episode-btn {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
     color: white;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
 }
 
 .play-episode-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(99, 102, 241, 0.6);
+    box-shadow: 0 6px 25px rgba(147, 51, 234, 0.6);
 }
 
 .download-btn {
@@ -270,19 +270,19 @@ h1 {
 
 .control-btn:hover {
     color: var(--primary-color);
-    background: rgba(0, 206, 209, 0.15);
+    background: rgba(147, 51, 234, 0.15);
 }
 
 .control-btn.play-btn {
     background: var(--primary-color);
     color: white;
     padding: 0.75rem;
-    box-shadow: 0 4px 15px rgba(0, 206, 209, 0.4);
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
 }
 
 .control-btn.play-btn:hover {
     background: var(--primary-light);
-    box-shadow: 0 6px 25px rgba(0, 206, 209, 0.6);
+    box-shadow: 0 6px 25px rgba(147, 51, 234, 0.6);
     transform: scale(1.1);
 }
 
@@ -293,7 +293,7 @@ h1 {
 
 .control-btn.secondary-btn:hover {
     opacity: 1;
-    background: rgba(0, 206, 209, 0.1);
+    background: rgba(147, 51, 234, 0.1);
 }
 
 #btn-speed {
@@ -330,7 +330,7 @@ h1 {
     background: var(--primary-color);
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 2px 8px rgba(147, 51, 234, 0.4);
 }
 
 .progress-bar::-moz-range-thumb {
@@ -340,7 +340,7 @@ h1 {
     border-radius: 50%;
     cursor: pointer;
     border: none;
-    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 2px 8px rgba(147, 51, 234, 0.4);
 }
 
 .progress-bar::-webkit-slider-runnable-track {
@@ -417,7 +417,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 4px 20px rgba(147, 51, 234, 0.4);
     z-index: 1001;
     animation: slideDown 0.4s ease;
 }
