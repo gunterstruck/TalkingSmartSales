@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnPlayPause = document.getElementById('btn-play-pause');
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
+    const btnSpeed = document.getElementById('btn-speed');
+    const btnRewind = document.getElementById('btn-rewind');
+    const btnForward = document.getElementById('btn-forward');
     const playIcon = document.getElementById('play-icon');
     const pauseIcon = document.getElementById('pause-icon');
     const progressBar = document.getElementById('progress-bar');
@@ -259,6 +262,34 @@ document.addEventListener('DOMContentLoaded', () => {
         // Next
         btnNext.addEventListener('click', playNext);
 
+        // Speed Control (1x → 1.25x → 1.5x → 2x → 1x)
+        btnSpeed.addEventListener('click', () => {
+            const speeds = [1, 1.25, 1.5, 2];
+            const currentSpeed = appState.audio.playbackRate;
+            let nextIndex = speeds.indexOf(currentSpeed) + 1;
+
+            if (nextIndex >= speeds.length) nextIndex = 0;
+
+            const newSpeed = speeds[nextIndex];
+            appState.audio.playbackRate = newSpeed;
+            btnSpeed.textContent = newSpeed + 'x';
+
+            showMessage(`Geschwindigkeit: ${newSpeed}x`, 'info');
+        });
+
+        // Rewind 15 seconds
+        btnRewind.addEventListener('click', () => {
+            appState.audio.currentTime = Math.max(0, appState.audio.currentTime - 15);
+        });
+
+        // Forward 30 seconds
+        btnForward.addEventListener('click', () => {
+            appState.audio.currentTime = Math.min(
+                appState.audio.duration || 0,
+                appState.audio.currentTime + 30
+            );
+        });
+
         // Progress bar
         progressBar.addEventListener('input', (e) => {
             const time = (e.target.value / 100) * appState.audio.duration;
@@ -317,13 +348,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 playNext();
             });
 
+            navigator.mediaSession.setActionHandler('seekbackward', (details) => {
+                const skipTime = details.seekOffset || 15;
+                appState.audio.currentTime = Math.max(
+                    appState.audio.currentTime - skipTime,
+                    0
+                );
+            });
+
+            navigator.mediaSession.setActionHandler('seekforward', (details) => {
+                const skipTime = details.seekOffset || 30;
+                appState.audio.currentTime = Math.min(
+                    appState.audio.currentTime + skipTime,
+                    appState.audio.duration || 0
+                );
+            });
+
             navigator.mediaSession.setActionHandler('seekto', (details) => {
                 if (details.seekTime) {
                     appState.audio.currentTime = details.seekTime;
                 }
             });
 
-            console.log('Media Session API initialized');
+            console.log('Media Session API initialized with skip controls');
         }
     }
 
