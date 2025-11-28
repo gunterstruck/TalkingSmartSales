@@ -46,9 +46,18 @@
         </div>
 
         <div class="player-controls">
-            <button id="btn-prev" class="control-btn" title="Vorherige Episode">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <button id="btn-speed" class="control-btn secondary-btn" title="Geschwindigkeit ändern">1x</button>
+
+            <button id="btn-prev" class="control-btn secondary-btn" title="Vorherige Episode">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                </svg>
+            </button>
+
+            <button id="btn-rewind" class="control-btn" title="15 Sekunden zurück">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/>
+                    <text x="12" y="17" font-size="7" text-anchor="middle" fill="currentColor" font-weight="bold">15</text>
                 </svg>
             </button>
 
@@ -61,8 +70,15 @@
                 </svg>
             </button>
 
-            <button id="btn-next" class="control-btn" title="Nächste Episode">
+            <button id="btn-forward" class="control-btn" title="30 Sekunden vor">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.5 8c2.65 0 5.05.99 6.9 2.6L22 7v9h-9l3.62-3.62c-1.39-1.16-3.16-1.88-5.12-1.88-3.54 0-6.55 2.31-7.6 5.5l-2.37-.78C2.92 11.03 6.85 8 11.5 8z"/>
+                    <text x="12" y="17" font-size="7" text-anchor="middle" fill="currentColor" font-weight="bold">30</text>
+                </svg>
+            </button>
+
+            <button id="btn-next" class="control-btn secondary-btn" title="Nächste Episode">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M16 18h2V6h-2zm-11-7l8.5-6v12z"/>
                 </svg>
             </button>
