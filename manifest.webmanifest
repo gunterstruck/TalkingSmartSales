@@ -1,7 +1,7 @@
 {
-  "name": "Podcast Player",
-  "short_name": "Podcast",
-  "description": "Interner Podcast Player - Höre deine Lieblingsepisoden offline",
+  "name": "Talking Smart Sales",
+  "short_name": "TalkingSmart",
+  "description": "Talking Smart Sales - Höre deine Lieblingsepisoden offline",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
