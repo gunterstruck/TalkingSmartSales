@@ -200,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(() => {
                 appState.isPlaying = true;
                 updatePlayPauseButton();
+                updateNavigationButtons();
                 updateMediaSessionMetadata();
 
                 // Cache on play
@@ -326,6 +327,22 @@ document.addEventListener('DOMContentLoaded', () => {
             playIcon.style.display = 'block';
             pauseIcon.style.display = 'none';
             btnPlayPause.title = 'Abspielen';
+        }
+    }
+
+    function updateNavigationButtons() {
+        // Disable previous button if at first episode
+        if (appState.currentIndex <= 0) {
+            btnPrev.disabled = true;
+        } else {
+            btnPrev.disabled = false;
+        }
+
+        // Disable next button if at last episode
+        if (appState.currentIndex >= appState.episodes.length - 1) {
+            btnNext.disabled = true;
+        } else {
+            btnNext.disabled = false;
         }
     }
 
