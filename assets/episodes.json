@@ -1,42 +1,10 @@
 [
   {
     "id": "ep001",
-    "title": "Willkommen zum Podcast",
-    "description": "In dieser ersten Episode stellen wir uns vor und erklären, worum es in diesem Podcast geht.",
-    "duration": "15:30",
+    "title": "Riverside - Tatjana & Jannis Studio Session",
+    "description": "Die erste Episode mit Tatjana und Jannis im Studio.",
+    "duration": "2:59:36",
     "fileUrl": "assets/audio/episode-001.mp3",
     "publishedAt": "2025-01-15"
-  },
-  {
-    "id": "ep002",
-    "title": "Die Zukunft der Technologie",
-    "description": "Wir sprechen über aufkommende Technologien und wie sie unseren Alltag verändern werden.",
-    "duration": "22:45",
-    "fileUrl": "assets/audio/episode-002.mp3",
-    "publishedAt": "2025-01-22"
-  },
-  {
-    "id": "ep003",
-    "title": "Progressive Web Apps",
-    "description": "Eine tiefe Analyse von PWAs, deren Vorteilen und wie man sie erstellt.",
-    "duration": "18:20",
-    "fileUrl": "assets/audio/episode-003.mp3",
-    "publishedAt": "2025-01-29"
-  },
-  {
-    "id": "ep004",
-    "title": "Audio im Web",
-    "description": "Wie man Audio-Inhalte im Web optimal bereitstellt und die Media Session API nutzt.",
-    "duration": "25:10",
-    "fileUrl": "assets/audio/episode-004.mp3",
-    "publishedAt": "2025-02-05"
-  },
-  {
-    "id": "ep005",
-    "title": "Service Worker Deep Dive",
-    "description": "Alles über Service Worker, Caching-Strategien und Offline-Funktionalität.",
-    "duration": "30:00",
-    "fileUrl": "assets/audio/episode-005.mp3",
-    "publishedAt": "2025-02-12"
   }
 ]
