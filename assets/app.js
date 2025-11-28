@@ -296,7 +296,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 artist: 'Podcast',
                 album: 'Episoden',
                 artwork: [
-                    { src: '/assets/icon-96.png', sizes: '96x96', type: 'image/png' },
                     { src: '/assets/icon-192.png', sizes: '192x192', type: 'image/png' },
                     { src: '/assets/icon-512.png', sizes: '512x512', type: 'image/png' }
                 ]
