@@ -71,12 +71,48 @@ document.addEventListener('DOMContentLoaded', () => {
         setupPlayerControls();
     }
 
+    // --- Parse Release Date from Filename ---
+    function parseDateFromFilename(fileUrl) {
+        // Expected format: episode-XXX-YYYYMMDD.mp3
+        const match = fileUrl.match(/episode-\d+-(\d{8})\.mp3/);
+        if (match && match[1]) {
+            const dateStr = match[1]; // YYYYMMDD
+            const year = dateStr.substring(0, 4);
+            const month = dateStr.substring(4, 6);
+            const day = dateStr.substring(6, 8);
+            return `${year}-${month}-${day}`;
+        }
+        return null;
+    }
+
+    // --- Format Date for Display ---
+    function formatDateForDisplay(dateStr) {
+        if (!dateStr) return '';
+
+        const months = [
+            'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+            'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+        ];
+
+        const [year, month, day] = dateStr.split('-');
+        const monthName = months[parseInt(month) - 1];
+        return `${parseInt(day)}. ${monthName} ${year}`;
+    }
+
     // --- Load Episodes from JSON ---
     async function loadEpisodes() {
         try {
             const response = await fetch('assets/episodes.json');
             if (!response.ok) throw new Error('Failed to load episodes');
             appState.episodes = await response.json();
+
+            // Parse release date from filename if not present
+            appState.episodes.forEach(episode => {
+                if (!episode.publishedAt && episode.fileUrl) {
+                    episode.publishedAt = parseDateFromFilename(episode.fileUrl);
+                }
+            });
+
             console.log('Episodes loaded:', appState.episodes.length);
         } catch (error) {
             console.error('Error loading episodes:', error);
@@ -95,12 +131,14 @@ document.addEventListener('DOMContentLoaded', () => {
             episodeCard.className = 'episode-card';
             episodeCard.dataset.index = index;
 
+            const releaseDate = episode.publishedAt ? formatDateForDisplay(episode.publishedAt) : '';
+
             episodeCard.innerHTML = `
                 <div class="episode-header">
                     <div class="episode-icon">🎧</div>
                     <div class="episode-info">
                         <h3 class="episode-card-title">${episode.title}</h3>
-                        <p class="episode-meta">${episode.publishedAt} • ${episode.duration}</p>
+                        <p class="episode-meta">${releaseDate} • ${episode.duration}</p>
                     </div>
                 </div>
                 <p class="episode-description">${episode.description}</p>
