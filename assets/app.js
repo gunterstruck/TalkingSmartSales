@@ -152,12 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </svg>
                         Abspielen
                     </button>
-                    <button class="btn download-btn" data-url="${episode.fileUrl}" data-title="${episode.title}">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"/>
-                        </svg>
-                        Offline verfügbar machen
-                    </button>
                 </div>
             `;
 
@@ -169,14 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', (e) => {
                 const index = parseInt(e.currentTarget.dataset.index);
                 playEpisode(index);
-            });
-        });
-
-        document.querySelectorAll('.download-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const url = e.currentTarget.dataset.url;
-                const title = e.currentTarget.dataset.title;
-                cacheEpisode(url, title, e.currentTarget);
             });
         });
     }
@@ -405,46 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Cache Episode ---
-    async function cacheEpisode(url, title, buttonElement) {
-        if (!navigator.serviceWorker || !navigator.serviceWorker.controller) {
-            showMessage('Service Worker nicht verfügbar', 'error');
-            return;
-        }
-
-        try {
-            // Send message to service worker to cache this file
-            navigator.serviceWorker.controller.postMessage({
-                type: 'CACHE_AUDIO',
-                url: url
-            });
-
-            buttonElement.textContent = '✓ Wird gecacht...';
-            buttonElement.disabled = true;
-
-            showMessage(`${title} wird für Offline-Nutzung gespeichert`, 'success');
-
-            // Check if cached after a delay
-            setTimeout(async () => {
-                const isCached = await checkIfCached(url);
-                if (isCached) {
-                    buttonElement.innerHTML = `
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                        </svg>
-                        Offline verfügbar
-                    `;
-                    buttonElement.classList.add('cached');
-                }
-            }, 2000);
-
-        } catch (error) {
-            console.error('Error caching episode:', error);
-            showMessage('Fehler beim Cachen', 'error');
-            buttonElement.disabled = false;
-        }
-    }
-
+    // --- Cache Episode on Playback ---
     async function cacheEpisodeOnPlay(url) {
         if (!navigator.serviceWorker || !navigator.serviceWorker.controller) return;
 
@@ -454,19 +401,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         console.log('Caching on play:', url);
-    }
-
-    async function checkIfCached(url) {
-        if (!('caches' in window)) return false;
-
-        try {
-            const cache = await caches.open('podcast-audio-v1');
-            const response = await cache.match(url);
-            return !!response;
-        } catch (error) {
-            console.error('Error checking cache:', error);
-            return false;
-        }
     }
 
     // --- Utility Functions ---
