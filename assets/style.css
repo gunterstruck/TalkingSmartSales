@@ -321,6 +321,20 @@ h1 {
     width: 100%;
 }
 
+.player-branding {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.5rem;
+}
+
+.player-cover-art {
+    height: 80px;
+    width: auto;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+}
+
 .progress-bar {
     width: 100%;
     height: 6px;
