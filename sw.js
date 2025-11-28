@@ -3,17 +3,17 @@
 // Cache-on-Play/Download Strategy
 // ============================================
 
-const CACHE_VERSION = 'v1.01';
+const CACHE_VERSION = 'v1.02';
 const CORE_CACHE = `podcast-core-${CACHE_VERSION}`;
 const AUDIO_CACHE = `podcast-audio-${CACHE_VERSION}`;
 
 // Core assets to cache on install
 const CORE_ASSETS = [
-    '/',
-    '/index.html',
-    '/assets/app.js',
-    '/assets/style.css',
-    '/assets/episodes.json'
+    './',
+    './index.html',
+    './assets/app.js',
+    './assets/style.css',
+    './assets/episodes.json'
 ];
 
 // Install Event - Cache core assets only
@@ -112,7 +112,7 @@ self.addEventListener('fetch', (event) => {
             .catch(() => {
                 // Offline fallback
                 if (request.mode === 'navigate') {
-                    return caches.match('/index.html');
+                    return caches.match('./index.html');
                 }
                 return new Response('Offline', {
                     status: 503,

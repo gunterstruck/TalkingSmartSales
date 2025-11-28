@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Service Worker Registration ---
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
+            navigator.serviceWorker.register('sw.js')
                 .then(registration => {
                     console.log('Service Worker registered:', registration.scope);
 
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Load Episodes from JSON ---
     async function loadEpisodes() {
         try {
-            const response = await fetch('/assets/episodes.json');
+            const response = await fetch('assets/episodes.json');
             if (!response.ok) throw new Error('Failed to load episodes');
             appState.episodes = await response.json();
             console.log('Episodes loaded:', appState.episodes.length);
@@ -296,8 +296,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 artist: 'Podcast',
                 album: 'Episoden',
                 artwork: [
-                    { src: '/assets/icon-192.png', sizes: '192x192', type: 'image/png' },
-                    { src: '/assets/icon-512.png', sizes: '512x512', type: 'image/png' }
+                    { src: 'assets/icon-192.png', sizes: '192x192', type: 'image/png' },
+                    { src: 'assets/icon-512.png', sizes: '512x512', type: 'image/png' }
                 ]
             });
         }
