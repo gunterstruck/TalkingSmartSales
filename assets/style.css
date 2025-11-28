@@ -296,6 +296,16 @@ h1 {
     background: rgba(147, 51, 234, 0.1);
 }
 
+.control-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.control-btn.secondary-btn:disabled {
+    opacity: 0.2;
+}
+
 #btn-speed {
     border: 1px solid var(--border-color);
     border-radius: 8px;
