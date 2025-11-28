@@ -3,7 +3,7 @@
 // Cache-on-Play/Download Strategy
 // ============================================
 
-const CACHE_VERSION = 'v1.05';
+const CACHE_VERSION = 'v1.06';
 const CORE_CACHE = `podcast-core-${CACHE_VERSION}`;
 const AUDIO_CACHE = `podcast-audio-${CACHE_VERSION}`;
 
@@ -198,6 +198,7 @@ self.addEventListener('sync', (event) => {
 });
 
 console.log('[Service Worker] Script loaded');
+
 
 
 
